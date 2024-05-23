@@ -1,0 +1,8 @@
+#!/bin/bash
+
+icon=" "
+icon2=" "
+dt=$(date "+%Y %b %d (%a)")
+tm=$(date "+%I:%M%p")
+
+echo "$icon$dt  $icon2$tm"

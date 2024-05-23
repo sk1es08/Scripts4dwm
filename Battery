@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#battery information
+battery_info=$(acpi 2>/dev/null)
+
+# Extract battery level and charging status from the information
+battery_level=$(echo "$battery_info" | grep -oP '\d+%' | tr -d '%')
+charging_status=$(echo "$battery_info" | grep -oP 'Charging|Discharging' | head -n 1)
+
+# Define battery icon
+battery_icon=""
+
+if [ "$charging_status" == "Charging" ]; then
+    battery_icon=""  # Charging icon
+elif [ "$battery_level" -ge 75 ]; then
+    battery_icon=""  # Full battery icon
+elif [ "$battery_level" -ge 50 ]; then
+    battery_icon=""  # Three-quarters full battery icon
+elif [ "$battery_level" -ge 25 ]; then
+    battery_icon=""  # Half-full battery icon
+else
+    battery_icon=""  # Low battery icon
+fi
+
+# Display battery icon and percentage
+echo "$battery_icon $battery_level%"
+

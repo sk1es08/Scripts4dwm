@@ -1,0 +1,4 @@
+#!/bin/bash
+
+used_ram=$(free -h | awk '/^Mem/ {print $3}')
+echo "  $used_ram"

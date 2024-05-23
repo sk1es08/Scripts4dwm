@@ -1,0 +1,7 @@
+#!/bin/bash
+
+brightness=$(brillo)
+
+# Display brightness icon
+echo " $brightness%"
+

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+volume=$(pamixer --get-volume)
+muted=$(pamixer --get-mute)
+
+audio_icon="🔊"
+midaudio_icon=""
+lowaudio_icon=""
+muteaudio_icon=""
+
+
+# Update icon based on volume
+if [ "$muted" = "true" ]; then
+    icon="$muteaudio_icon Muted"
+else
+    if [ "$volume" -eq 0 ]; then
+        icon="$muteaudio_icon"  # Show mute icon if volume is 0
+    elif [ "$volume" -lt 25 ]; then
+        icon="$lowaudio_icon"  # Low volume icon
+    elif [ "$volume" -lt 50 ]; then
+        icon="$midaudio_icon"  # Medium volume icon
+    elif [ "$volume" -lt 75 ]; then
+        icon="$audio_icon"  # High volume icon
+   else
+	icon="$audio_icon"
+    fi
+    icon+=" $volume%"
+fi
+
+# Display the volume with icon
+echo "$icon"

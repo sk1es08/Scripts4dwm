@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#                   version 1.0
+#                Author : sk1es_08
+#To view or select wallpaper
+wall=$(sxiv -r -q -o -t /home/sk1es/Pictures/Wallpaper/wallhaven/* > /home/sk1es/.local/genfiles/wallgen.txt)
+
+#To read Generated wallpaper
+saved=$(cat /home/sk1es/.local/genfiles/wallgen.txt)
+
+#To generate color scheme
+wal -c
+wal -i $saved
+
+#To set wallpaper
+xwallpaper --zoom $saved
+
+#To generate dwmblock color schem
+xdotool key super+F5

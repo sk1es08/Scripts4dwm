@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get the connected network using nmcli
+connected_network=$(nmcli -t -f NAME connection show --active | grep -v '^[[:space:]]*lo[[:space:]]*$' | awk -F: '{gsub(/ [0-9]+$/, "", $1); print $1}')
+
+wifi_icon=" "
+no_network_icon=""
+
+if [ -n "$connected_network" ]; then
+    echo "$wifi_icon$connected_network"
+else
+    echo "$no_network_icon No internet"
+fi
+

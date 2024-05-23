@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+#   Made By sk1es_08   
+
+#To read Generated  wallpaper
+saved=$(cat /home/sk1es/.local/genfiles/wallgen.txt)
+
+#To set Generated  wallpaper
+xwallpaper --zoom $saved
+
+#To Generate color scheme
+wal -c
+wal -i $saved
+
+#To generate color scheme for dwmblock
+xdotool key super+F5
